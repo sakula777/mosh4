@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- <h1>Hello world</h1>-->
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Stock</th>
+        <th>Daily Rate</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for movie in movies %}
+    <tr>
+        <!--             双{}：呈现变量的值-->
+
+<!--        <td><a href="/movies/{{ movie.id }}">{{ movie.title }}</a></td>  # 但这种并不是最佳方案。-->
+        <td><a href="{% url 'movies:detail' movie.id %}">{{ movie.title }}</a></td>
+        <td>{{ movie.genre }}</td>
+        <td>{{ movie.number_in_stock }}</td>
+        <td>{{ movie.daily_rate }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
